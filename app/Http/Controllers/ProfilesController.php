@@ -7,11 +7,12 @@ use App\User;
 
 class ProfilesController extends Controller
 {
-  public function index($user)
+  public function show($user)
   {
 
-      $user = (User::find($user));
-      return view('home', [
+      $user = User::findOrFail($user);
+
+      return view('profiles.show', [
         'user' => $user,
       ]);
   }
