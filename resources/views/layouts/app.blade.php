@@ -29,11 +29,21 @@
                     </button>
 
                     <!-- Branding Image -->
+
+                    @if (Auth::user())
+                    <a class="navbar-brand" href="/profile/{{Auth::user()->id}}">
+                      <div style="display:flex"><img  style="max-height:28px; padding-right: 10px; border-right: solid; border-width: thin; border-color: lightgray;" src="https://seeklogo.net/wp-content/uploads/2016/09/instagram-logo-preview-400x400.png" /> <div style="padding-left: 10px">cloneGram</div> </div>
+
+                    </a>
+                </div>
+
+                    @else
                     <a class="navbar-brand" href="{{ url('/') }}">
                       <div style="display:flex"><img  style="max-height:28px; padding-right: 10px; border-right: solid; border-width: thin; border-color: lightgray;" src="https://seeklogo.net/wp-content/uploads/2016/09/instagram-logo-preview-400x400.png" /> <div style="padding-left: 10px">cloneGram</div> </div>
 
                     </a>
                 </div>
+                    @endif
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
