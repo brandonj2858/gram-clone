@@ -1784,13 +1784,18 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/follow/' + this.userId).then(function (response) {
         _this.status = !_this.status;
+        console.log(_this.status);
         console.log(response.data);
+      })["catch"](function (errors) {
+        if (errors.response.status == 401) {
+          window.location = '/login';
+        }
       });
     }
   },
   computed: {
     buttonText: function buttonText() {
-      return this.status ? 'Unfollow' : 'Follow';
+      return this.status == false ? 'Follow' : 'Unfollow';
     }
   }
 });
@@ -32638,22 +32643,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        staticStyle: {
-          "margin-left": "14px",
-          height: "21px",
-          "padding-top": "0px",
-          "margin-top": "23px"
-        },
-        attrs: { type: "button", name: "follow-button" },
-        domProps: { textContent: _vm._s(_vm.buttonText) },
-        on: { click: _vm.followUser }
+    _c("button", {
+      staticClass: "btn btn-primary",
+      staticStyle: {
+        "margin-left": "14px",
+        height: "21px",
+        "padding-top": "0px",
+        "margin-top": "23px"
       },
-      [_vm._v("Follow")]
-    )
+      attrs: { type: "button", name: "follow-button" },
+      domProps: { textContent: _vm._s(_vm.buttonText) },
+      on: { click: _vm.followUser }
+    })
   ])
 }
 var staticRenderFns = []

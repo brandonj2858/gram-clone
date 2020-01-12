@@ -1,6 +1,6 @@
 <template>
     <div >
-      <button @click="followUser" type="button" style="margin-left: 14px; height: 21px; padding-top: 0px; margin-top: 23px;" class="btn btn-primary" v-text="buttonText" name="follow-button">Follow</button>
+      <button @click="followUser" type="button" style="margin-left: 14px; height: 21px; padding-top: 0px; margin-top: 23px;" class="btn btn-primary" v-text="buttonText" name="follow-button"></button>
     </div>
 </template>
 
@@ -23,13 +23,19 @@
             axios.post('/follow/' + this.userId)
             .then(response => {
               this.status = !this.status
+              console.log(this.status);
               console.log(response.data);
+            })
+            .catch(errors => {
+              if (errors.response.status == 401) {
+                window.location = '/login';
+              }
             });
           }
         },
         computed: {
           buttonText() {
-            return (this.status) ? 'Unfollow' : 'Follow';
+            return (this.status == false) ? 'Follow' : 'Unfollow';
           }
         }
     }

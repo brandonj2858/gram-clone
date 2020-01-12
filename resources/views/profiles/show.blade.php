@@ -17,15 +17,15 @@
             </div>
 
             <div style="margin-top:-26px; text-align:right;"><a href="/p/create" style='margin-left: auto;'>Add New Post</a></div>
-            @if( Auth::user()->id === $user->id )
+            @if(Auth::user() && Auth::user()->id === $user->id )
             <div><a href="/profile/{{$user->id}}/edit" style="">Edit Profile </a></div>
             @endif
           </div>
         </div>
-        <div style="display: flex">
+        <div style="display: flex; padding-top: 3px;" >
           <div style="padding-right: 10px"><strong>120</strong> posts</div>
-          <div style="padding-right: 10px"><strong>32k</strong> followers</div>
-          <div style="padding-right: 10px"><strong>250</strong> following</div>
+          <div style="padding-right: 10px"><strong>{{$user->profile->followers->count()}}</strong> followers</div>
+          <div style="padding-right: 10px"><strong>{{$user->following->count()}}</strong> following</div>
         </div>
 
         <div>
