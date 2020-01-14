@@ -5,7 +5,7 @@
     @foreach($posts as $post)
     <div class="row" >
       <div class="col-md-4 col-md-offset-3" >
-        <img style="max-width: 30vw; padding-right: 3px;" src="{{$post->image}}" />
+        <a href="/profile/{{$post->user->id}}"><img style="max-width: 30vw; padding-right: 3px;" src="{{$post->image}}" /></a>
       </div>
 
           </div>
