@@ -13,12 +13,15 @@
           <div style="width: 100%;">
             <div style="display: flex;">
               <h3 style="margin-bottom: -5px;">{{ $user -> username }}</h3>
+              @if(Auth::user() && Auth::user()->id !== $user->id )
               <follow-button user-id="{{$user->id}}" follows=" {{ $follows }} "></follow-button>
+              @endif
             </div>
 
-            <div style="margin-top:-26px; text-align:right;"><a href="/p/create" style='margin-left: auto;'>Add New Post</a></div>
             @if(Auth::user() && Auth::user()->id === $user->id )
-            <div><a href="/profile/{{$user->id}}/edit" style="">Edit Profile </a></div>
+            <div style="margin-top:-26px; text-align:right;"><a href="/p/create" style='margin-left: auto;'>Add New Post</a></div>
+
+            <div style="padding-top: 4px;"><a href="/profile/{{$user->id}}/edit" style="">Edit Profile </a></div>
             @endif
           </div>
         </div>

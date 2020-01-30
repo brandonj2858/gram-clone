@@ -48,6 +48,8 @@ class PostsController extends Controller
 
       auth()->user()->posts()->create($data);
 
+      return redirect ('/profile/'. auth()->user()->id);
+
     }
 
 }
